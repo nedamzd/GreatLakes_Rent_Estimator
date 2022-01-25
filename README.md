@@ -1,2 +1,2 @@
-# GreatLakes_Rent_Estimator
-ML App Development for estimating rent amount for housings in Greatlakes 
+# Great Lakes Rent Estimator
+https://greatlakesrentprediction.herokuapp.com/

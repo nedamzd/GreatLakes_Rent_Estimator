@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Great Lakes Rent Estimator - Machine Learning Group Project</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+
+    <style>
+
+body, html {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+label, input, select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: small;
+    
+}
+select{
+    background:ivory;
+}
+
+input,select {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    background:ivory;
+}
+
+.submit {
+    background:ivory;
+    font-weight: bold;
+}
+
+.bg {
+    background-image: url(https://images.pexels.com/photos/1612351/pexels-photo-1612351.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.entry-box {
+    position: absolute;
+    top: 7%;
+    right: 7%;
+    padding: 32px;
+    background: rgba(255,255,255,0.9);
+
+}
+
+.column {
+    float: left;
+    width: 50%;
+  }
+
+  .row{
+      margin-right: 0 ;
+      margin-left: 0 ;
+  }
+
+  .text-area {
+    position: absolute;
+    top: 7%;
+    left: 7%;
+    padding: 32px;
+    color: #fff;
+  }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.dropdown {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.container {
+    font-family: 'Open Sans', sans-serif;
+}
+    </style>
+    
+
+</head>
+
+<body class="bg">
+
+    <div class="container col-md-5 shadow rounded content-area text-area" style="font-family: 'Open Sans' sans-serif;" >
+        <p style="font-size: 50px;"> Welcome to the Great Lakes Rent Estimator.</p>
+        <br><br><br>
+        <h2 style="font-size: 35px; font-family: 'Open Sans' sans-serif;">GLRE is the fastest way to find out the "going rents" - anywhere in the Great Lakes States.</h2>
+        <br><br>
+        <h2 style="text-indent: 5%; font-size: 27px; font-family: 'Open Sans' sans-serif;">The Great Lakes Rent Estimator uses a machine learning model trained on over 51,000 recent rental listings on Craigslist within the Great Lakes States to 
+            predict the price of a rental listing based on common housing amenities. With GLRE, the market no longer has to remain a mystery. By analyzing the listings in the surrounding region, 
+            GLRE can calculate rent prices based on similar listings and provide a market rate estimate -- or let you know if you're currently paying too much.  </h3>    
+        </h2>
+    </div>
+        
+    <div style="border: 1px #ccc solid;" class="container col-md-5 shadow rounded content-area entry-box">
+        <form action='/result' method='POST'>
+            <div class="row">
+                <h2>Fill out the form below to get your estimate.</h2>
+            </div>
+
+            <div class="row" style="padding-right: 5px; padding-top: 10px;">
+                <label style="padding-left: 5px; padding-right: 35px; " for="region">Region</label>
+            </div>
+            <div class="row;" >
+                <select id='region' name='region' style="height: 40px; width: 100%">
+                    <option value = '0'>Akron, OH</option>
+                    <option value = '1'>Albany, NY</option>
+                    <option value = '2'>Altoona, PA</option>
+                    <option value = '3'>Ann Arbor, MI</option>
+                    <option value = '4'>Appleton, WI</option>
+                    <option value = '5'>Ashtabula, OH</option>
+                    <option value = '6'>Athens, OH</option>
+                    <option value = '7'>Battle Creek, MI</option>
+                    <option value = '8'>Bemidji, MN</option>
+                    <option value = '9'>Binghamton, OH</option>
+                    <option value = '10'>Bloomington, IN</option>
+                    <option value = '11'>Bloomington-Normal, IL</option>
+                    <option value = '12'>Brainerd, MN</option>
+                    <option value = '13'>Buffalo, NY</option>
+                    <option value = '14'>Catskills, NY</option>
+                    <option value = '15'>Central Michigan</option>
+                    <option value = '16'>Champaign Urbana, IL</option>
+                    <option value = '17'>Chautauqua, NY</option>
+                    <option value = '18'>Chicago, IL</option>
+                    <option value = '19'>Chillicothe, OH</option>
+                    <option value = '20'>Cincinnati, OH</option>
+                    <option value = '21'>Cleveland, OH</option>
+                    <option value = '22'>Columbus, OH</option>
+                    <option value = '23'>Dayton / Springfield, OH</option>
+                    <option value = '24'>Decatur, IL</option>
+                    <option value = '25'>Detroit Metro, MI</option>
+                    <option value = '26'>Duluth / Superior, MN</option>
+                    <option value = '27'>Eau Claire, WI</option>
+                    <option value = '28'>Elmira-Corning, NY</option>
+                    <option value = '29'>Erie, PA</option>
+                    <option value = '30'>Evansville, IN</option>
+                    <option value = '31'>Fargo / Moorhead, MN</option>
+                    <option value = '32'>Finger Lakes, NY</option>
+                    <option value = '33'>Flint, MI</option>
+                    <option value = '34'>Fort Wayne, IN</option>
+                    <option value = '35'>Glens Falls, NY</option>
+                    <option value = '36'>Grand Rapids, MI</option>
+                    <option value = '37'>Green Bay, WI</option>
+                    <option value = '38'>Harrisburg, PA</option>
+                    <option value = '39'>Holland, MI</option>
+                    <option value = '40'>Hudson Valley, NY</option>
+                    <option value = '41'>Indianapolis, IN</option>
+                    <option value = '42'>Ithaca, NY</option>
+                    <option value = '43'>Jackson, MI</option>
+                    <option value = '44'>Janesville, WI</option>                
+                    <option value = '45'>Kalamazoo, MI</option>
+                    <option value = '46'>Kenosha-Racine, WI</option>
+                    <option value = '47'>Kokomo, IN</option>
+                    <option value = '48'>La Crosse, WI</option>
+                    <option value = '49'>La Salle County, IL</option>
+                    <option value = '50'>Lafayette / West Lafayette, IN</option>
+                    <option value = '51'>Lancaster, PA</option>
+                    <option value = '52'>Lansing, MI</option>
+                    <option value = '53'>Lehigh Valley, PA</option>
+                    <option value = '54'>Lima / Findlay, OH</option>
+                    <option value = '55'>Long Island, NY</option>
+                    <option value = '56'>Madison, WI</option>
+                    <option value = '57'>Mankato, MN</option>
+                    <option value = '58'>Mansfield, OH</option>
+                    <option value = '59'>Mattoon-Charleston, IL</option>
+                    <option value = '60'>Meadville, PA</option>
+                    <option value = '61'>Milwaukee, WI</option>
+                    <option value = '62'>Minneapolis / St. Paul, MN</option>
+                    <option value = '63'>Monroe, NY</option>
+                    <option value = '64'>Muncie / Anderson, IN</option>
+                    <option value = '65'>Muskegon, MI</option>
+                    <option value = '66'>New York City, NY</option>
+                    <option value = '67'>Northern Wisconsin</option>
+                    <option value = '68'>Northern Michigan</option>
+                    <option value = '69'>Northern Panhandle, WV</option>
+                    <option value = '70'>Oneonta, NY</option>
+                    <option value = '71'>Parkersburg-Marietta, OH</option>
+                    <option value = '72'>Peoria, IL</option>
+                    <option value = '73'>Philadelphia, PA</option>
+                    <option value = '74'>Pittsburgh, PA</option>
+                    <option value = '75'>Plattsburgh-Adirondacks, NY</option>
+                    <option value = '76'>Poconos, NY</option>
+                    <option value = '77'>Port Huron, MI</option>
+                    <option value = '78'>Potsdamn-Canton-Massena, NY</option>
+                    <option value = '79'>Quad Cities, IA/IL</option>
+                    <option value = '80'>Reading, PA</option>
+                    <option value = '81'>Richmond, IN</option>
+                    <option value = '82'>Rochester, NY</option>
+                    <option value = '83'>Rockford, IL</option>
+                    <option value = '84'>Saginaw-Midland-Baycity, MI</option>
+                    <option value = '85'>Sandusky, OH</option>
+                    <option value = '86'>Scranton / Wilkes-Barre, PA</option>
+                    <option value = '87'>Sheboygan, WI</option>
+                    <option value = '88'>South Bend / Michiana, IN</option>
+                    <option value = '89'>Southern Illinois</option>
+                    <option value = '90'>Southwest Minnesota</option>
+                    <option value = '91'>Southwest Michigan</option>
+                    <option value = '92'>Springfield, IL</option>
+                    <option value = '93'>St. Cloud, MN</option>
+                    <option value = '95'>State College, PA</option>
+                    <option value = '96'>Syracuse, NY</option>
+                    <option value = '97'>Terre Haute, IN</option>
+                    <option value = '98'>The Thumb, MI</option>
+                    <option value = '99'>Toledo, OH</option>
+                    <option value = '100'>Tuscarawas County, OH</option>
+                    <option value = '101'>Twin Tiers, NY/PA</option>
+                    <option value = '102'>Upper Peninsula, MI</option>
+                    <option value = '103'>Utica-Rome-Oneida, NY</option>
+                    <option value = '104'>Watertown, NY</option>
+                    <option value = '105'>Wausau, WI</option>
+                    <option value = '106'>Western Illinois</option>
+                    <option value = '107'>Williamsport, PA</option>
+                    <option value = '108'>York, PA</option>
+                    <option value = '109'>Youngstown, OH</option>
+                    <option value = '110'>Zanesville / Cambridge, OH</option>
+                </select>
+            </div>
+
+            <!-- end of row -->
+
+            <div class="row" style="padding-top: 10px;">
+                <label for='type' style="padding-top: 10px;">Housing Type</label>
+            </div>
+            <div class="row" >
+                <select id='type' name='type' style="padding-left: 10px; height: 40px; width: 100%;">
+                    <option value="0">Apartment</option>
+                    <option value="5">House</option>
+                    <option value="1">Condo</option>
+                    <option value="9">Townhouse</option>
+                    <option value="3">Duplex</option>
+                    <option value="8">Manufactured</option>
+                    <option value="6">In-Law</option>
+                    <option value="2">Cottage/Cabin</option>
+                    <option value="7">Loft</option>
+                    <option value="4">Flat</option>
+                </select>
+            </div>
+            <!-- end of row -->
+
+            <div class="row" style="padding-top: 10px;">
+                <label for='sqfeet' style="padding-right: 15px; padding-left: 5px; padding-top: 10px;">Square Feet</label>
+
+            </div>
+            <div class="row">
+                <select type='text' id='sqfeet' name='sqfeet' style="height: 40px; width: 100%;">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                    <option value="500">500</option>
+                    <option value="600">600</option>
+                    <option value="700">700</option>
+                    <option value="800">800</option>
+                    <option value="900">900</option>
+                    <option value="1000">1000</option>
+                    <option value="1100">1100</option>
+                    <option value="1200">1200</option>
+                    <option value="1300">1300</option>
+                    <option value="1400">1400</option>
+                    <option value="1500">1500</option>
+                    <option value="1600">1600</option>
+                    <option value="1700">1700</option>
+                    <option value="1800">1800</option>
+                    <option value="1900">1900</option>
+                    <option value="2000">2000</option>
+                    <option value="2100">2100</option>
+                    <option value="2200">2200</option>
+                    <option value="2300">2300</option>
+                    <option value="2400">2400</option>
+                    <option value="2500">2500</option>
+                    <option value="2600">2600</option>
+                    <option value="2700">2700</option>
+                    <option value="2800">2800</option>
+                    <option value="2900">2900</option>
+                    <option value="3000">3000</option>
+                    <option value="3100">3100</option>
+                    <option value="3200">3200</option>
+                    <option value="3300">3300</option>
+                    <option value="3400">3400</option>
+                    <option value="3500">3500</option>
+                    <option value="3600">3600</option>
+                    <option value="3700">3700</option>
+                    <option value="3800">3800</option>
+                    <option value="3900">3900</option>
+                    <option value="4000">4000</option>
+                </select>
+                    
+            </div>
+            <!-- end of row -->
+<!-------------------------------------------------------------------------------------->
+    <div>
+        <div class="column" > <!--left side entry box col-->
+            <div class="row" style="padding-top: 5%;">
+                <label for="beds" style="padding-right: 5%;">Bedrooms</label>
+                    <select style="margin-left: 10px; margin-right: 10px; height: 30px; width: 100px;" type='text' id='beds' name='beds'>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="pets_allowed">Pets Allowed?</label>
+                    <select style="height: 30px;" class="dropdown" id='pets_allowed' name='pets_allowed'>
+                        <option value='0'>No</option>
+                        <option value='1'>Yes</option>
+                    </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="wheelchair_access">Wheelchair Access?</label>
+                    <select style="height: 30px;" class="dropdown" name="wheelchair_access" id="wheelchair_access">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="comes_furnished">Comes Furnished?</label>
+                <select style="height: 30px;" class="dropdown" name="comes_furnished" id="comes_furnished">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="parking_options">Parking Options</label>
+                    <select style="height: 30px; width: 200px;" class="dropdown" name="parking_options" id="parking_options">
+                        <option value="0">Attached Garage</option>
+                        <option value="1">Carport</option>
+                        <option value="2">Detatched Garage</option>
+                        <option value="3">No Parking</option>
+                        <option value="4">Off-Street Parking</option>
+                        <option value="5">Street Parking</option>
+                        <option value="6">Valet Parking</option>
+                    </select>
+            </div>
+        </div>
+            <!-- end of column -->
+
+<!-------------------------------------------------------------------------------------------->
+        <div class="column"> <!--right side entry box col-->
+            
+            <div class="row" style="padding-top: 5%;">
+                <label style="padding-right: 5%;" for='baths'>Bathrooms</label>
+                <select style="margin-left: 10px; margin-right: 10px; height: 30px; width: 100px;" type='text' id='beds' name='baths'>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="smoking_allowed">Smoking?</label>
+                    <select style="height: 30px;" class="dropdown" name="smoking_allowed" id="smoking_allowed">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="electric_vehicle_charge">Electric Vehicle Charge?</label>
+                    <select style="height: 30px;" class="dropdown" name="electric_vehicle_charge" id="electric_vehicle_charge">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+            </div>
+            <br>
+            <div class="row">
+                <label for="laundry_options">Laundry Options</label>
+                    <select style="height: 30px; width: 200px;" class="dropdown" name="laundry_options" id="laundry_options">
+                        <option value="0">Laundry in the Building</option>
+                        <option value="1">Laundry on Site</option>
+                        <option value="2">No Laundry on Site</option>
+                        <option value="3">Washer and Dryer Hookups</option>
+                        <option value="4">Washer Dryer Hookups in Unit</option>
+                    </select>
+            </div>
+            <br>
+
+        </div>
+        
+    </div>
+       
+    <div><input class="col-md-5 submit" type="submit" value="Get Estimate"></div>
+
+    </form>
+
+    </div>
+
+</body>
+</html>
