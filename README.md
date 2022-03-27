@@ -6,6 +6,7 @@ The Great Lakes Rent Estimator uses a machine learning model trained on over 51,
 The Libraries and tools used for the data cleaning, ML model and app development
 
 Pandas, Numpy, matplotlib.pyplot, Sklearn, pickle
+
 Pickle is a useful Python tool that allows you to save your models, to minimise lengthy re-training and allow you to share, commit, and re-load pre-trained machine learning models. Pickle is a generic object serialization module that can be used for serializing and deserializing objects.
 The app is deployed on Heruko for public access.
 
